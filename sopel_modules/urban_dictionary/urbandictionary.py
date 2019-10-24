@@ -35,4 +35,4 @@ def urbandictionary_lookup(bot, trigger):
 
     defs.sort(key = lambda x: x.upvotes, reverse=True)
     d = defs[0]
-    bot.say(f"{d.word}: {BOLD}Definition{BOLD}: {ud_conv(d.definition)} {BOLD}Example{BOLD}: {ud_conv(d.example)}")
+    bot.say(f"{BOLD}{d.word}{BOLD}: {ud_conv(d.definition)} {BOLD}Example{BOLD}: {ud_conv(d.example)}", max_messages=3)
