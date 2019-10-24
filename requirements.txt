@@ -1,0 +1,9 @@
+sopel>=6.0,<7
+requests
+pytz
+flake8
+pytest
+pytest-cov
+httmock
+geoip2==2.9.0
+urbandictionary==1.1.1
