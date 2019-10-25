@@ -19,7 +19,7 @@ def ud_conv(s):
 
 def urbandictionary_lookup(bot, nick, word):
     if not word:
-        bot.say(f"{trigger.nick} You must specify something to search")
+        bot.say(f"{nick} You must specify something to search")
         return
 
     defs = []
