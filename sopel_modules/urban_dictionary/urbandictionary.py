@@ -35,8 +35,8 @@ def urbandictionary_lookup(bot, nick, word):
 
     filtered_defs = [x for x in defs if x.word.strip().lower() == word.strip().lower()]
     if len(filtered_defs) == 0:
-        words = ', '.join([x.word for x in defs])
-        bot.say(f"{nick} no exact results for '{word}', possible matchs are {words}")
+        words = ', '.join(set([x.word.lower() for x in defs]))
+        bot.say(f"{nick} no exact results for '{word}', possible matchs are: {words}")
         return
 
     filtered_defs.sort(key = lambda x: x.upvotes, reverse=True)
