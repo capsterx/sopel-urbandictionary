@@ -13,7 +13,9 @@ ITALICS=chr(0x1D)
 UNDERLINE=chr(0x1F)
 
 def ud_conv(s):
-    return re.sub(r"\[([\w' \"_-]*)\]", f"{UNDERLINE}\\1{UNDERLINE}", s)
+    italics =  re.sub(r"\[([\w' \"_-]*)\]", f"{UNDERLINE}\\1{UNDERLINE}", s.strip())
+    newlines = re.sub(r"\r?\n(\r?\n)*", f" {BOLD}--{BOLD} ", italics)
+    return newlines
 
 @sopel.module.commands('ud')
 @sopel.module.example('.ud netflix and chill')
