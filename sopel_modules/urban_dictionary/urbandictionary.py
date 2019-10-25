@@ -33,8 +33,14 @@ def urbandictionary_lookup(bot, nick, word):
         bot.say(f"{nick} no results found for {word}")
         return
 
-    defs.sort(key = lambda x: x.upvotes, reverse=True)
-    d = defs[0]
+    filtered_defs = [x for x in defs if x.word.strip().lower() == word.strip().lower()]
+    if len(filtered_defs) == 0:
+        words = ', '.join([x.word for x in defs])
+        bot.say(f"{nick} no exact results for '{word}', possible matchs are {words}")
+        return
+
+    filtered_defs.sort(key = lambda x: x.upvotes, reverse=True)
+    d = filtered_defs[0]
     bot.say(f"{BOLD}{d.word}{BOLD}: {ud_conv(d.definition)} {BOLD}Example{BOLD}: {ud_conv(d.example)}", max_messages=3)
 
 @sopel.module.commands('ud')
